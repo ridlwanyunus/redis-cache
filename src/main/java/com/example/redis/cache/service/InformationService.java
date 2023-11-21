@@ -28,4 +28,7 @@ public class InformationService {
 		return repo.findById(id);
 	}
 	
+	public Information findBySerialNumber(String serialNumber) {
+		return repo.findBySerialNumber(serialNumber);
+	}
 }

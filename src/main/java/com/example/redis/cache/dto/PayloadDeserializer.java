@@ -5,12 +5,12 @@ import org.apache.kafka.common.serialization.Deserializer;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class InformationDeserializer implements Deserializer<DebeziumDto>{
+public class PayloadDeserializer implements Deserializer<Payload>{
 
 	@Override
-	public DebeziumDto deserialize(String topic, byte[] data) {
+	public Payload deserialize(String topic, byte[] data) {
 		try {
-			return new ObjectMapper().readValue(new String(data, "UTF-8"), DebeziumDto.class);
+			return new ObjectMapper().readValue(new String(data, "UTF-8"), Payload.class);
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new SerializationException(e.getMessage());

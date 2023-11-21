@@ -1,7 +1,5 @@
 package com.example.redis.cache.dto;
 
-import com.example.redis.cache.entity.Information;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,8 +9,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Payload {
 
-	private Information before;
-	private Information after;
-	
+	private InformationDto before;
+	private InformationDto after;
+	private Source source;
+	private String op;
+	private Long ts_ms;
+	private String transaction;
 	
 }
