@@ -3,6 +3,7 @@ package com.example.redis.cache.message;
 import java.util.concurrent.ExecutorService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 
@@ -15,6 +16,9 @@ import com.example.redis.cache.service.InformationService;
 @Component
 public class KafkaMessageListener {
 	
+	
+	@Value("${app.name}")
+	private String appName;
 	
 	@Autowired
 	private InformationService infoService;
@@ -41,8 +45,15 @@ public class KafkaMessageListener {
 			information.setCertificate(informationDto.getCertificate());
 			information.setCreationDate(informationDto.getCreation_date());
 			infoService.save(information);
+						
+			System.out.println(String.format("[%s] Serial Number id: %s Thread %s", appName, payload.getAfter().getId(), threadName));
 			
-			System.out.println(String.format("Serial Number id: %s Thread %s", payload.getAfter().getId(), threadName));
+			try {
+				Thread.sleep(5000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			
 		});
 		

@@ -80,5 +80,40 @@
 			</plugin>
 		</plugins>
 	</build>
+	
+	<profiles>
+		<profile>
+			<id>local</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<build.profile.id>local</build.profile.id>
+				<profileActive>local</profileActive>
+			</properties>
+		</profile>
+		<profile>
+			<id>a</id>
+			<properties>
+				<build.profile.id>a</build.profile.id>
+				<profileActive>a</profileActive>
+			</properties>
+		</profile>
+		<profile>
+			<id>b</id>
+			<properties>
+				<build.profile.id>b</build.profile.id>
+				<profileActive>b</profileActive>
+			</properties>
+		</profile>
+		<profile>
+			<id>c</id>
+			<properties>
+				<build.profile.id>c</build.profile.id>
+				<profileActive>c</profileActive>
+			</properties>
+		</profile>
+	</profiles>
+	
 
 </project>
